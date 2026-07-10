@@ -1,0 +1,49 @@
+---
+import type { Lang } from '../i18n/config.i18n';
+import Navbar from '../components/common/Navbar.astro';
+import Footer from '../components/common/Footer.astro';
+import '../styles/global.css';
+
+
+interface Props {
+	title: string;
+	lang: Lang;
+	description?: string;
+}
+
+const { title, lang, description = "Web informativa coorporativa" } = Astro.props;
+
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/Logo Dolex.png" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+
+		<link rel="canonical" href={Astro.url.href} />
+
+		<link rel="alternate" hreflang="es" href={new URL('/es', Astro.url.origin)} />
+		<link rel="alternate" hreflang="en" href={new URL('/en', Astro.url.origin)} />
+		<link rel="alternate" hreflang="x-default" href={new URL('/es', Astro.url.origin)} />
+		<title>{title}</title>
+	</head>
+	<body class="bg-white text-gray-900 antialiased">
+		<Navbar lang={lang} />
+		<main>
+			
+			<slot /> 
+		</main>
+		<Footer lang={lang} />
+	</body>
+</html>
+
+
+<style is:global>
+	html {
+		scroll-behavior: smooth;
+	}
+</style>
