@@ -1,14 +1,14 @@
 {
       "es": {
-            "brandName": "AUTROUI - INICIO ",
+            "brandName": "DOLEX - INICIO ",
             "autroui": {
-                  "title": "AUTROUI - RAPIDO"
+                  "title": "DOLEX - RAPIDO"
             }
       },
       "en": {
-            "brandName": "AUTROUI - HOME ",
+            "brandName": "DOLEX - HOME ",
             "autroui": {
-                  "title": "AUTROUI - FAST"
+                  "title": "DOLEX - FAST"
             }
       }
 }
