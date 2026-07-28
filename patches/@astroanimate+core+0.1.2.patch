@@ -1,0 +1,13 @@
+diff --git a/node_modules/@astroanimate/core/dist/index.js b/node_modules/@astroanimate/core/dist/index.js
+index bdbe12d..3c473f1 100644
+--- a/node_modules/@astroanimate/core/dist/index.js
++++ b/node_modules/@astroanimate/core/dist/index.js
+@@ -13,7 +13,7 @@ export { default as CardStack } from './components/CardStack/CardStack.astro';
+ export { default as CountUp } from './components/CountUp/CountUp.astro';
+ export { default as Dock } from './components/Dock/Dock.astro';
+ export { default as DockItem } from './components/Dock/DockItem.astro';
+-export { default as Dropdown } from './components/Dropdown/Dropdown.astro';
++
+ export { default as GridDotsBackground } from './components/GridDotsBackground/GridDotsBackground.astro';
+ export { default as HighlightText } from './components/HighlightText/HighlightText.astro';
+ export { default as InfiniteMarquee } from './components/InfiniteMarquee/InfiniteMarquee.astro';

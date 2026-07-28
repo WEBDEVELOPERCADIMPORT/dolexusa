@@ -1,7 +1,8 @@
 ---
+import { FadeInText, ScaleIn } from "@astroanimate/core";
+
 import type { Lang } from "../../../i18n/config.i18n";
 import homeContent from "../../../data/site-home-content.json";
-import { FadeInText, ScaleIn } from "@astroanimate/core";
 
 interface Props {
     lang: Lang;
@@ -16,17 +17,34 @@ const data = homeContent[lang].about;
         class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-16"
     >
         <div class="flex-1 w-full md:max-w-[50%]">
-            <FadeInText as="h2" enhance={true} duration={0.6} class="text-4xl md:text-[2.5rem] font-bold mb-6 leading-tight">
+            <FadeInText
+                as="h2"
+                enhance={true}
+                duration={0.6}
+                class="text-4xl md:text-[2.5rem] font-bold mb-6 leading-tight"
+            >
                 {data.title}
             </FadeInText>
-            <FadeInText as="p" enhance={true} duration={0.6} delay={0.1} class="text-lg leading-relaxed mb-12 opacity-90">
+            <FadeInText
+                as="p"
+                enhance={true}
+                duration={0.6}
+                delay={0.1}
+                class="text-lg leading-relaxed mb-12 opacity-90"
+            >
                 {data.description}
             </FadeInText>
 
             <div class="flex flex-col gap-6">
                 {
                     data.features.map((feature, index) => (
-                        <FadeInText as="div" enhance={true} duration={0.5} delay={0.2 + (index * 0.1)} class="flex items-start gap-4">
+                        <FadeInText
+                            as="div"
+                            enhance={true}
+                            duration={0.5}
+                            delay={0.2 + index * 0.1}
+                            class="flex items-start gap-4"
+                        >
                             <div class="text-white bg-white/20 p-2 rounded-full flex items-center justify-center shrink-0">
                                 <svg
                                     width="24"
@@ -55,7 +73,14 @@ const data = homeContent[lang].about;
             </div>
         </div>
 
-        <ScaleIn as="div" enhance={true} duration={800} initialScale={0.9} delay={300} class="flex-1 w-full relative">
+        <ScaleIn
+            as="div"
+            enhance={true}
+            duration={800}
+            initialScale={0.9}
+            delay={300}
+            class="flex-1 w-full relative"
+        >
             <img
                 src="/images/home/about.png"
                 alt="Institucional Dolex"

@@ -1,9 +1,10 @@
 ---
+import { FadeInText } from "@astroanimate/core";
+
 import type { Lang } from "../../../i18n/config.i18n";
 import type { Category } from "../../../actions/categories/getCategories.action";
 import homeContent from "../../../data/site-home-content.json";
 import CategoryCard from "../components/CategoryCard.astro";
-import { FadeInText } from "@astroanimate/core";
 
 interface Props {
     lang: Lang;

@@ -22,6 +22,7 @@
     "wrangler": "^4.82.2"
   },
   "devDependencies": {
+    "patch-package": "^8.0.1",
     "prettier-plugin-astro": "^0.14.1"
   },
   "overrides": {

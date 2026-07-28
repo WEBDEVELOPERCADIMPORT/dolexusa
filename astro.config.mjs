@@ -36,8 +36,6 @@ export default defineConfig({
       locales: {
         en: 'en',
         es: 'es',
-        fr: 'fr',
-        it: 'it'
       },
     },
     changefreq: 'weekly',
