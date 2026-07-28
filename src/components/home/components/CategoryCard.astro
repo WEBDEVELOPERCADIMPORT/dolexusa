@@ -1,0 +1,70 @@
+---
+import type { Category } from "../../../actions/categories/getCategories.action";
+import type { Lang } from "../../../i18n/config.i18n";
+
+interface Props {
+    category: Category;
+    lang: Lang;
+    exploreText?: string;
+}
+
+const { category, lang, exploreText = "Explorar" } = Astro.props;
+---
+
+<a
+    href={`/${lang}/${category.slug}`}
+    class="flex flex-col bg-white rounded-2xl overflow-hidden no-underline text-inherit shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-all duration-300 h-full group hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.1)]"
+    style={`--cat-color: ${category.color}`}
+>
+    <div class="bg-gray-50 p-8 flex items-center justify-center aspect-square">
+        <img
+            src={category.image}
+            alt={category.name}
+            class="max-w-full max-h-50 object-contain transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+        />
+    </div>
+    <div class="p-8 pb-6 px-6 flex flex-col grow">
+        <div class="h-10 mb-4 flex items-center">
+            {
+                category.logo ? (
+                    <img
+                        src={category.logo}
+                        alt={`${category.name} Logo`}
+                        class="max-h-full w-auto"
+                    />
+                ) : (
+                    <h3
+                        class="m-0 text-2xl font-extrabold"
+                        style="color: var(--cat-color);"
+                    >
+                        {category.name}
+                    </h3>
+                )
+            }
+        </div>
+        <p class="text-[0.95rem] text-gray-500 leading-relaxed mb-6 grow">
+            Alivio especializado para las necesidades de tu familia.
+        </p>
+        <button
+            class="flex items-center justify-center gap-2 w-full p-3 bg-text-main text-white border-none rounded-lg font-semibold text-base cursor-pointer transition-colors duration-200 group-hover:bg-[var(--cat-color,#1a1a1a)]"
+            aria-label={`Explorar ${category.name}`}
+        >
+            {exploreText}
+            <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M5 12H19M19 12L12 5M19 12L12 19"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+        </button>
+    </div>
+</a>

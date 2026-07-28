@@ -1,0 +1,28 @@
+---
+import type { Category } from "../../../actions/categories/getCategories.action";
+import categoryContent from "../../../data/site-category-content.json";
+import type { Lang } from "../../../i18n/config.i18n";
+
+interface Props {
+  category: Category;
+  lang: Lang;
+}
+
+const { category, lang } = Astro.props;
+const data = categoryContent[lang].hero;
+---
+
+<section class="bg-[var(--cat-color,#d10029)] text-white px-5 md:px-[8%] py-16 relative overflow-hidden" style={`--cat-color: ${category.color}`}>
+    <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-16 relative z-10 text-center md:text-left">
+        <div class="flex-1 w-full md:max-w-[50%]">
+            <span class="inline-block bg-white/20 text-white font-bold text-[0.85rem] px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider">{data.subtitle}</span>
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">{category.name}</h1>
+            <!-- If there was a description field in category, it would go here -->
+            <p class="text-lg leading-relaxed opacity-90">Descubre el alivio que necesitas con la línea especializada de {category.name}. Diseñado para actuar donde más lo necesitas.</p>
+        </div>
+        
+        <div class="flex-1 flex justify-center md:justify-end w-full">
+            <img src={category.banner} alt={`${category.name} Banner`} class="max-w-full h-auto max-h-[400px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.2)]" />
+        </div>
+    </div>
+</section>

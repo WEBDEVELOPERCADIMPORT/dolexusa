@@ -1,0 +1,40 @@
+{
+    "categories": [
+        {
+            "id": "1",
+            "name": "Dolex Forte",
+            "slug": "dolex-forte",
+            "image": "/images/dolex-forte/products/37-0085.png",
+            "logo": "/images/dolex-forte/logo.png",
+            "banner": "/images/dolex-forte/banner.jpg",
+            "color": "#be0909"
+        },
+        {
+            "id": "2",
+            "name": "Dolex Fem",
+            "slug": "dolex-fem",
+            "image": "/images/dolex-fem/products/37-0127.png",
+            "logo": "/images/dolex-fem/logo.png",
+            "banner": "/images/dolex-fem/banner.jpg",
+            "color": "#8c1788"
+        },
+        {
+            "id": "3",
+            "name": "Dolex Flex",
+            "slug": "dolex-flex",
+            "image": "/images/dolex-flex/products/37-0116.png",
+            "logo": "/images/dolex-flex/logo.png",
+            "banner": "/images/dolex-flex/banner.jpg",
+            "color": "green"
+        },
+        {
+            "id": "4",
+            "name": "Dolex Children",
+            "slug": "dolex-children",
+            "image": "/images/dolex-children/products/14-0074.png",
+            "logo": "/images/dolex-children/logo.png",
+            "banner": "/images/dolex-children/banner.jpg",
+            "color": "#f9c409"
+        }
+    ]
+}

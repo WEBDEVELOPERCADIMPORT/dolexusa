@@ -1,0 +1,40 @@
+---
+import type { Lang } from "../../../i18n/config.i18n";
+import homeContent from "../../../data/site-home-content.json";
+import SymptomCard from "../components/SymptomCard.astro";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const data = homeContent[lang].symptoms;
+
+// Map products to slugs based on the design
+const productMap: Record<string, string> = {
+    "Dolex Forte": "forte",
+    "Dolex Flex": "flex",
+    "Dolex Fem": "fem",
+    "Dolex Children": "children"
+};
+---
+
+<section class="bg-gray-100 px-5 md:px-[8%] py-16 md:py-20 border-t border-border-light">
+    <div class="max-w-[1200px] mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-[2.5rem] font-extrabold text-text-main mb-2">{data.title}</h2>
+            <p class="text-lg text-gray-500">{data.description}</p>
+        </div>
+        
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6">
+            {data.items.map((item: { title: string, product: string }) => (
+                <SymptomCard 
+                    title={item.title} 
+                    productName={item.product} 
+                    productSlug={productMap[item.product]} 
+                    lang={lang} 
+                />
+            ))}
+        </div>
+    </div>
+</section>

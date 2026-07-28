@@ -1,0 +1,31 @@
+---
+import type { Category } from "../../../actions/categories/getCategories.action";
+import type { Product } from "../../../actions/products/getProductsByCategory.action";
+import type { Lang } from "../../../i18n/config.i18n";
+import productContent from "../../../data/site-product-content.json";
+
+interface Props {
+    category: Category;
+    product: Product;
+    lang: Lang;
+}
+
+const { category, product, lang } = Astro.props;
+const data = productContent[lang].breadcrumb;
+---
+
+<nav class="bg-bg-light px-5 md:px-[8%] pt-8" aria-label="Breadcrumb">
+    <ol class="list-none p-0 m-0 flex items-center flex-wrap gap-2 max-w-[1200px] mx-auto">
+        <li class="flex items-center text-[0.9rem]">
+            <a href={`/${lang}`} class="text-gray-500 no-underline transition-colors duration-200 hover:text-dolex-red">{data.home}</a>
+        </li>
+        <li class="flex items-center text-[0.9rem] text-[#999] text-[0.8rem]">/</li>
+        <li class="flex items-center text-[0.9rem]">
+            <a href={`/${lang}/${category.slug}`} class="text-gray-500 no-underline transition-colors duration-200 hover:text-dolex-red">{category.name}</a>
+        </li>
+        <li class="flex items-center text-[0.9rem] text-[#999] text-[0.8rem]">/</li>
+        <li class="flex items-center text-[0.9rem]" aria-current="page">
+            <span class="text-text-main font-semibold">{product.name}</span>
+        </li>
+    </ol>
+</nav>

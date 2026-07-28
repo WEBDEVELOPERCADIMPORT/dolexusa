@@ -1,0 +1,65 @@
+---
+import type { Lang } from "../../../i18n/config.i18n";
+import homeContent from "../../../data/site-home-content.json";
+
+interface Props {
+    lang: Lang;
+}
+
+const { lang } = Astro.props;
+const data = homeContent[lang].about;
+---
+
+<section class="bg-[#ba0c2f] px-5 md:px-[8%] py-20 text-white">
+    <div
+        class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-16"
+    >
+        <div class="flex-1 w-full md:max-w-[50%]">
+            <h2 class="text-4xl md:text-[2.5rem] font-bold mb-6 leading-tight">
+                {data.title}
+            </h2>
+            <p class="text-lg leading-relaxed mb-12 opacity-90">
+                {data.description}
+            </p>
+
+            <div class="flex flex-col gap-6">
+                {
+                    data.features.map((feature) => (
+                        <div class="flex items-start gap-4">
+                            <div class="text-white bg-white/20 p-2 rounded-full flex items-center justify-center shrink-0">
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"
+                                        fill="currentColor"
+                                    />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">
+                                    {feature.title}
+                                </h3>
+                                <p class="text-sm opacity-80 leading-snug">
+                                    {feature.description}
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <div class="flex-1 w-full relative">
+            <img
+                src="/images/home/about.png"
+                alt="Institucional Dolex"
+                class="w-full h-auto rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.2)] object-cover aspect-video bg-black/10"
+            />
+        </div>
+    </div>
+</section>

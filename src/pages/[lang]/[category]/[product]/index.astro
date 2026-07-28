@@ -1,0 +1,62 @@
+---
+import Layout from "../../../../layouts/Layout.astro";
+import type { Lang } from "../../../../i18n/config.i18n";
+import { actions } from "astro:actions";
+
+import Breadcrumb from "../../../../components/product/sections/Breadcrumb.astro";
+import ProductDetail from "../../../../components/product/sections/ProductDetail.astro";
+import Recommended from "../../../../components/product/sections/Recommended.astro";
+import FAQ from "../../../../components/home/sections/FAQ.astro"; // Reusing FAQ section
+
+const lang = Astro.params.lang as Lang;
+const categorySlug = Astro.params.category as string;
+const productSlug = Astro.params.product as string;
+
+// Fetch Data
+const { data: categoryResponse } = await Astro.callAction(
+    actions.getCategoryBySlug,
+    { slug: categorySlug },
+);
+const category = categoryResponse?.data;
+const { data: productResponse } = await Astro.callAction(
+    actions.getProductBySlug,
+    { slug: productSlug },
+);
+const product = productResponse?.data;
+
+if (!category || !product) {
+    return Astro.redirect("/404");
+}
+
+// Ensure the product actually belongs to this category
+if (product.category !== category.slug) {
+    return Astro.redirect("/404");
+}
+const schema = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name: product.name,
+    image: [new URL(product.image, Astro.url.origin).href],
+    description: product.description,
+    brand: {
+        "@type": "Brand",
+        name: "Dolex",
+    },
+    category: category.name,
+};
+---
+
+<Layout
+    title={`${product.name} | Dolex`}
+    lang={lang}
+    description={product.description}
+    image={product.image}
+    schema={schema}
+>
+    <main>
+        <Breadcrumb category={category} product={product} lang={lang} />
+        <ProductDetail product={product} category={category} lang={lang} />
+        <Recommended currentProduct={product} lang={lang} />
+        <FAQ lang={lang} />
+    </main>
+</Layout>

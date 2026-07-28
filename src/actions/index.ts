@@ -1,10 +1,16 @@
 // src/actions/index.ts
-import { defineAction } from 'astro:actions';
+import { getCategories } from './categories/getCategories.action';
+import { getCategoryBySlug } from './categories/getCategoryBySlug.action';
+import { getProductsByCategory } from './products/getProductsByCategory.action';
+import { getProductBySlug } from './products/getProductBySlug.action';
+import { getReviews } from './reviews/getReviews.action';
+import { getPlacesByZipcode } from './places/getPlacesByZipcode.action';
 
 export const server = {
-    miAccion: defineAction({
-        handler: async (input) => {
-            return { success: true };
-        },
-    }),
+    getCategories,
+    getCategoryBySlug,
+    getProductsByCategory,
+    getProductBySlug,
+    getReviews,
+    getPlacesByZipcode
 };

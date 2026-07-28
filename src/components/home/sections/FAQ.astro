@@ -1,0 +1,28 @@
+---
+import type { Lang } from "../../../i18n/config.i18n";
+import homeContent from "../../../data/site-home-content.json";
+import AccordionItem from "../components/AccordionItem.astro";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const data = homeContent[lang].faq;
+---
+
+<section class="bg-white px-5 md:px-[8%] py-16 md:py-20">
+    <div class="max-w-[800px] mx-auto">
+        <h2 class="text-4xl md:text-[2.5rem] font-extrabold text-dolex-red text-center mb-12">{data.title}</h2>
+        
+        <div class="flex flex-col">
+            {data.items.map((item: { question: string, answer: string }, index: number) => (
+                <AccordionItem 
+                    question={item.question} 
+                    answer={item.answer} 
+                    isOpen={index === 0} 
+                />
+            ))}
+        </div>
+    </div>
+</section>

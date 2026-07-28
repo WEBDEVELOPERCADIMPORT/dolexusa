@@ -1,50 +1,275 @@
 ---
-import type { Lang } from '../../i18n/config.i18n';
-import { ui } from "../../i18n/ui.i18n";
-import { getLangFromUrl, useTranslations } from '../../i18n/utils.i18n';
+import type { Lang } from "../../i18n/config.i18n";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils.i18n";
+import { actions } from "astro:actions";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-
 const currentPath = Astro.url.pathname;
 const switchLangPath =
   lang === "es"
     ? currentPath.replace("/es", "/en")
     : currentPath.replace("/en", "/es");
+
+const { data: categoriesResponse } = await Astro.callAction(
+  actions.getCategories,
+  {},
+);
+const categories = categoriesResponse?.data || [];
+
+const isHome = currentPath === `/${lang}/` || currentPath === `/${lang}`;
+const isProductRelated = !isHome;
 ---
 
-<nav class="sticky top-0 z-50 w-full px-6 py-4 bg-transparent  backdrop-blur-md border-b border-gray-100">
-  <div class="max-w-7xl mx-auto flex justify-between items-center">
-    
-    <a href={`/${lang}/`} class="flex items-center gap-2 transition hover:opacity-80">
-      <img src="/logo_dolex.png" class="w-10 h-10 object-contain" alt="Logo del sitio" />
-    </a>
+<header
+  class="sticky top-0 z-[100] bg-white/90 backdrop-blur-md border-b border-border-soft"
+>
+  <nav class="w-full px-6 py-4">
+    <div class="max-w-[1200px] mx-auto flex justify-between items-center">
+      <a
+        href={`/${lang}/`}
+        class="flex items-center transition-opacity duration-200 hover:opacity-80"
+      >
+        <img
+          src="/logo.png"
+          alt="Dolex Logo"
+          class="h-10 w-auto object-contain"
+        />
+      </a>
 
-    <div class="flex items-center gap-6 sm:gap-8">
-      
-      <ul class="flex items-center gap-6 text-sm font-medium text-gray-600">
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex items-center gap-8 list-none m-0 p-0">
         <li>
-          <a href={`/${lang}/`} class="hover:text-blue-600 transition-colors">
-            {t.nav.home}
-          </a>
+          <a
+            href={`/${lang}/`}
+            class={`flex items-center gap-1 py-2 font-bold text-base no-underline transition-colors duration-200 hover:text-dolex-red ${isHome ? "text-dolex-red" : "text-text-muted"}`}
+            >{t.nav.home}</a
+          >
         </li>
         <li>
-          <a href={`/${lang}/#about`} class="hover:text-blue-600 transition-colors">
-            {t.nav.about}
+          <a
+            href={`/${lang}/#places-section`}
+            class="flex items-center gap-1 py-2 text-text-muted font-bold text-base no-underline transition-colors duration-200 hover:text-dolex-red"
+            >{t.nav.stores}</a
+          >
+        </li>
+        <li class="relative group">
+          <a
+            href="javascript:void(0)"
+            class={`flex items-center gap-1 py-2 font-bold text-base no-underline transition-colors duration-200 hover:text-dolex-red ${isProductRelated ? "text-dolex-red" : "text-text-muted"}`}
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {t.nav.products}
+            <svg
+              class="transition-transform duration-200 group-hover:rotate-180"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 9L12 15L18 9"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
           </a>
+          <ul
+            class="absolute top-full left-1/2 -translate-x-1/2 translate-y-2.5 bg-white rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] min-w-[220px] py-2 list-none opacity-0 invisible transition-all duration-200 ease-out border border-border-soft group-hover:opacity-100 group-hover:visible group-hover:translate-y-0"
+          >
+            {
+              categories.map((cat) => {
+                const isActive = currentPath.includes(`/${lang}/${cat.slug}`);
+                return (
+                  <li>
+                    <a
+                      href={`/${lang}/${cat.slug}`}
+                      class={`block px-6 py-3 no-underline font-bold transition-colors duration-200 hover:bg-black/5 hover:text-[var(--hover-color)] ${isActive ? "text-dolex-red bg-black/5" : "text-text-main"}`}
+                      style={`--hover-color: ${cat.color}`}
+                    >
+                      {cat.name}
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
         </li>
       </ul>
 
-      <div class="hidden sm:block w-px h-5 bg-gray-200"></div>
+      <div class="flex items-center gap-4">
+        <!-- Language Switcher -->
+        <div class="flex items-center text-xl font-extrabold tracking-wide">
+          <a
+            href={lang === "es" ? currentPath : switchLangPath}
+            class={`no-underline transition-colors duration-200 ${lang === "es" ? "text-dolex-red" : "text-[#665e5a] hover:text-dolex-red"}`}
+          >
+            ES
+          </a>
+          <span class="mx-3 text-[#e5c5c8] font-light">|</span>
+          <a
+            href={lang === "en" ? currentPath : switchLangPath}
+            class={`no-underline transition-colors duration-200 ${lang === "en" ? "text-dolex-red" : "text-[#665e5a] hover:text-dolex-red"}`}
+          >
+            EN
+          </a>
+        </div>
 
-      <a
-        href={switchLangPath}
-        class="flex items-center justify-center px-3 py-1.5 text-xs sm:text-sm font-semibold text-gray-700 bg-gray-50 border border-gray-200 rounded-full shadow-sm hover:bg-gray-100 hover:text-blue-600 transition-all active:scale-95"
-        title={lang === "es" ? "Switch to English" : "Cambiar a Español"}
-      >
-        {lang === "es" ? "🇺🇸 EN" : "🇲🇽 ES"}
-      </a>
+        <!-- Mobile Toggle -->
+        <button
+          class="mobile-toggle flex flex-col justify-between w-6 h-[18px] bg-transparent border-none cursor-pointer p-0 z-[110] md:hidden"
+          aria-label="Toggle Menu"
+          aria-expanded="false"
+        >
+          <span
+            class="hamburger-line top w-full h-[2px] bg-text-main rounded-sm transition-all duration-300 origin-left"
+          ></span>
+          <span
+            class="hamburger-line middle w-full h-[2px] bg-text-main rounded-sm transition-all duration-300 origin-left"
+          ></span>
+          <span
+            class="hamburger-line bottom w-full h-[2px] bg-text-main rounded-sm transition-all duration-300 origin-left"
+          ></span>
+        </button>
+      </div>
+    </div>
+  </nav>
 
+  <!-- Mobile Menu Modal -->
+  <div
+    class="mobile-menu fixed top-0 left-0 w-full h-screen bg-white z-[90] -translate-y-full transition-transform duration-400 overflow-y-auto pt-[80px]"
+    aria-hidden="true"
+  >
+    <div class="p-8">
+      <ul class="list-none p-0 m-0 flex flex-col gap-6">
+        <li>
+          <a
+            href={`/${lang}/`}
+            class={`mobile-link text-2xl font-bold no-underline flex items-center justify-between w-full bg-none border-none p-0 ${isHome ? "text-dolex-red" : "text-text-main"}`}
+            >{t.nav.home}</a
+          >
+        </li>
+        <li>
+          <a
+            href={`/${lang}/#places`}
+            class="mobile-link text-2xl font-bold text-text-main no-underline flex items-center justify-between w-full bg-none border-none p-0"
+            >{t.nav.stores}</a
+          >
+        </li>
+        <li class="mobile-dropdown">
+          <button
+            class={`mobile-dropdown-toggle text-2xl font-bold no-underline flex items-center justify-between w-full bg-transparent border-none p-0 cursor-pointer text-left font-inherit group ${isProductRelated ? "text-dolex-red" : "text-text-main"}`}
+            aria-expanded="false"
+          >
+            {t.nav.products}
+            <svg
+              class="transition-transform duration-200 group-aria-expanded:rotate-180"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 9L12 15L18 9"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+          </button>
+          <ul
+            class="mobile-dropdown-menu list-none p-0 m-0 max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out group-aria-expanded:max-h-[500px]"
+          >
+            {
+              categories.map((cat) => {
+                const isActive = currentPath.includes(`/${lang}/${cat.slug}`);
+                return (
+                  <li class="pt-4">
+                    <a
+                      href={`/${lang}/${cat.slug}`}
+                      class={`mobile-link no-underline text-lg font-bold pl-4 border-l-2 transition-colors duration-200 block hover:text-[var(--hover-color)] hover:border-[var(--hover-color)] ${isActive ? "text-dolex-red border-dolex-red" : "text-gray-500 border-border-light"}`}
+                      style={`--hover-color: ${cat.color}`}
+                    >
+                      {cat.name}
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
-</nav>
+</header>
+
+<script>
+  function setupNavigation() {
+    const toggleBtn = document.querySelector(".mobile-toggle");
+    const mobileMenu = document.querySelector(".mobile-menu");
+    const mobileDropdownToggle = document.querySelector(
+      ".mobile-dropdown-toggle",
+    );
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    if (toggleBtn && mobileMenu) {
+      const toggleMenu = () => {
+        const expanded = toggleBtn.getAttribute("aria-expanded") === "true";
+        toggleBtn.setAttribute("aria-expanded", String(!expanded));
+        mobileMenu.setAttribute("aria-hidden", String(expanded));
+
+        if (!expanded) {
+          document.body.style.overflow = "hidden";
+          toggleBtn.classList.add(
+            "[&_.top]:rotate-45",
+            "[&_.middle]:opacity-0",
+            "[&_.bottom]:-rotate-45",
+          );
+          mobileMenu.classList.remove("-translate-y-full");
+          mobileMenu.classList.add("translate-y-0");
+        } else {
+          document.body.style.overflow = "";
+          toggleBtn.classList.remove(
+            "[&_.top]:rotate-45",
+            "[&_.middle]:opacity-0",
+            "[&_.bottom]:-rotate-45",
+          );
+          mobileMenu.classList.add("-translate-y-full");
+          mobileMenu.classList.remove("translate-y-0");
+        }
+      };
+
+      toggleBtn.addEventListener("click", toggleMenu);
+
+      // Close menu when clicking a link
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (toggleBtn.getAttribute("aria-expanded") === "true") {
+            toggleMenu();
+          }
+        });
+      });
+    }
+
+    if (mobileDropdownToggle) {
+      mobileDropdownToggle.addEventListener("click", () => {
+        const expanded =
+          mobileDropdownToggle.getAttribute("aria-expanded") === "true";
+        mobileDropdownToggle.setAttribute("aria-expanded", String(!expanded));
+        const menu = mobileDropdownToggle.nextElementSibling as HTMLElement;
+        if (!expanded) {
+          menu.style.maxHeight = menu.scrollHeight + "px";
+        } else {
+          menu.style.maxHeight = "0px";
+        }
+      });
+    }
+  }
+
+  // Setup on initial load and after view transitions
+  document.addEventListener("astro:page-load", setupNavigation);
+</script>

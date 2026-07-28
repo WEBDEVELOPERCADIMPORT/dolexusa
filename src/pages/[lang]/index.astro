@@ -1,30 +1,44 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import content from '../../data/site-content.json';
-import type { Lang } from '../../i18n/config.i18n';
+import Layout from "../../layouts/Layout.astro";
+import content from "../../data/site-content.json";
+import homeContent from "../../data/site-home-content.json";
+import type { Lang } from "../../i18n/config.i18n";
+import { actions } from "astro:actions";
+
+import Hero from "../../components/home/sections/Hero.astro";
+import About from "../../components/home/sections/About.astro";
+import Categories from "../../components/home/sections/Categories.astro";
+import Symptoms from "../../components/home/sections/Symptoms.astro";
+import FAQ from "../../components/home/sections/FAQ.astro";
+import Places from "../../components/home/sections/Places.astro";
 
 const lang = Astro.params.lang as Lang;
-const data = content[lang];
 
 if (!(lang in content)) {
-    return Astro.redirect('/404');
+    return Astro.redirect("/404");
 }
+
+const globalData = content[lang];
+const data = homeContent[lang];
+const { data: categoriesResult } = await Astro.callAction(
+    actions.getCategories,
+    {},
+);
+const categories = categoriesResult?.data || [];
 ---
 
-<Layout title={data.brandName} lang={lang}>
-    <main class="min-h-screen flex flex-col items-center justify-center relative p-6">
-        
-        <div class="relative group mb-20">
-            <div class="absolute inset-0 bg-gradient-to-r from-[#21D4ED] to-[#AF25FD] blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500 rounded-full"></div>
-            <img 
-                src="/logo_dolex.png" 
-                alt="Logo Flotante" 
-                class="relative w-48 h-48 md:w-64 md:h-64 object-contain animate-float"
-            />
-            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-3/4 h-4 bg-black/40 blur-md rounded-full animate-shadow"></div>
-        </div>
-        <h1 class="text-gray-400 text-center">
-            {data.autroui.title}
-        </h1>
+<Layout
+    title={`Dolex - ${data.hero.title}`}
+    lang={lang}
+    description={data.hero.description}
+    image="/images/hero/home/hero_1.home.png"
+>
+    <main>
+        <Hero lang={lang} />
+        <About lang={lang} />
+        <Categories lang={lang} categories={categories} />
+        <Symptoms lang={lang} />
+        <Places lang={lang} />
+        <FAQ lang={lang} />
     </main>
 </Layout>

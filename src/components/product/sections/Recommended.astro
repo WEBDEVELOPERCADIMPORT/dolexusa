@@ -1,0 +1,80 @@
+---
+import type { Product } from "../../../actions/products/getProductsByCategory.action";
+import type { Lang } from "../../../i18n/config.i18n";
+import productContent from "../../../data/site-product-content.json";
+import ProductCard from "../../category/components/ProductCard.astro";
+import { actions } from "astro:actions";
+
+interface Props {
+    currentProduct: Product;
+    lang: Lang;
+}
+
+const { currentProduct, lang } = Astro.props;
+const data = productContent[lang].recommended;
+
+// Logic to get recommended products
+let recommendedProducts: Product[] = [];
+
+// Get products from same category
+const { data: sameCategoryResponse } = await Astro.callAction(
+    actions.getProductsByCategory,
+    { categorySlug: currentProduct.category },
+);
+const sameCategoryProducts = (sameCategoryResponse?.data || []).filter(
+    (p) => p.id !== currentProduct.id,
+);
+
+if (sameCategoryProducts.length > 0) {
+    // If we have products in same category, take up to 3
+    recommendedProducts = sameCategoryProducts.slice(0, 3);
+} else {
+    // If not, fetch first product from other categories
+    const { data: categoriesResponse } = await Astro.callAction(
+        actions.getCategories,
+        {},
+    );
+    const categories = categoriesResponse?.data || [];
+
+    for (const cat of categories) {
+        if (
+            cat.slug !== currentProduct.category &&
+            recommendedProducts.length < 3
+        ) {
+            const { data: productsResponse } = await Astro.callAction(
+                actions.getProductsByCategory,
+                { categorySlug: cat.slug },
+            );
+            const products = productsResponse?.data || [];
+            if (products.length > 0) {
+                recommendedProducts.push(products[0]);
+            }
+        }
+    }
+}
+---
+
+{
+    recommendedProducts.length > 0 && (
+        <section class="bg-white px-5 md:px-[8%] py-20">
+            <div class="max-w-[1200px] mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 border-b border-border-light pb-4 gap-4 md:gap-0">
+                    <h2 class="text-[2rem] font-bold text-text-main m-0">{data.title}</h2>
+                    <a href={`/${lang}`} class="text-dolex-red font-semibold no-underline transition-opacity duration-200 hover:opacity-80">
+                        {data.viewAll} &rarr;
+                    </a>
+                </div>
+
+                <div class={`grid ${recommendedProducts.length >= 3 ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-2'} gap-8`}>
+                    {recommendedProducts.map((product) => (
+                        <ProductCard
+                            product={product}
+                            lang={lang}
+                            viewText={data.viewDetails}
+                        />
+                    ))}
+                </div>
+            </div>
+        </section>
+    )
+}

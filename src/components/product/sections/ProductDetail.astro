@@ -1,0 +1,101 @@
+---
+import type { Product } from "../../../actions/products/getProductsByCategory.action";
+import type { Category } from "../../../actions/categories/getCategories.action";
+import productContent from "../../../data/site-product-content.json";
+import type { Lang } from "../../../i18n/config.i18n";
+
+interface Props {
+    product: Product;
+    category: Category;
+    lang: Lang;
+}
+
+const { product, category, lang } = Astro.props;
+const data = productContent[lang].productDetail;
+---
+
+<section class="bg-bg-light px-5 md:px-[8%] py-16">
+    <div
+        class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20"
+    >
+        <div
+            class="flex-1 w-full bg-white p-8 md:p-16 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] flex justify-center items-center"
+        >
+            <img
+                src={product.image}
+                alt={product.name}
+                class="max-w-full h-150 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.1)]"
+            />
+        </div>
+
+        <div class="flex-1 w-full md:max-w-[550px]">
+            <span
+                class="inline-block px-4 py-2 rounded-full font-bold text-[0.85rem] uppercase tracking-[0.1em] mb-6"
+                style={`background-color: ${category.color}20; color: ${category.color}`}
+            >
+                {category.name}
+            </span>
+
+            <h1
+                class="text-5xl md:text-[3rem] font-extrabold leading-tight mb-6"
+                style={`color: ${category.color}`}
+            >
+                {product.name}
+            </h1>
+
+            <p class="text-[1.125rem] text-text-muted leading-relaxed mb-10">
+                {product.description}
+            </p>
+
+            <div class="flex flex-col gap-4 mb-12">
+                {
+                    product.details.map((detail) => (
+                        <div class="flex items-center gap-4 text-[1.05rem] font-medium text-text-main">
+                            <span
+                                class="bg-black/5 p-2 rounded-full flex items-center justify-center shrink-0"
+                                style={`color: ${category.color}`}
+                            >
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M9 16.2L4.8 12L3.4 13.4L9 19L21 7L19.6 5.6L9 16.2Z"
+                                        fill="currentColor"
+                                    />
+                                </svg>
+                            </span>
+                            <span>{detail}</span>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div class="flex">
+                <a
+                    href={product.linkVasAlSuper}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-3 text-white px-10 py-5 rounded-xl font-bold text-[1.1rem] no-underline transition-all duration-200 shadow-[0_10px_20px_rgba(0,0,0,0.1)] w-full md:max-w-[400px] hover:opacity-90 hover:-translate-y-[2px]"
+                    style={`background-color: ${category.color}`}
+                >
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M7 18C5.9 18 5.01 18.9 5.01 20C5.01 21.1 5.9 22 7 22C8.1 22 9 21.1 9 20C9 18.9 8.1 18 7 18ZM1 2V4H3L6.6 11.59L5.24 14.04C5.09 14.32 5 14.65 5 15C5 16.1 5.9 17 7 17H19V15H7.42C7.28 15 7.17 14.89 7.17 14.75L7.2 14.63L8.1 13H15.55C16.3 13 16.96 12.59 17.3 11.97L20.88 5.48C20.96 5.34 21 5.17 21 5C21 4.45 20.55 4 20 4H5.21L4.27 2H1ZM17 18C15.9 18 15.01 18.9 15.01 20C15.01 21.1 15.9 22 17 22C18.1 22 19 21.1 19 20C19 18.9 18.1 18 17 18Z"
+                            fill="currentColor"></path>
+                    </svg>
+                    {data.buyButton}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

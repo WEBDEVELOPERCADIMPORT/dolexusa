@@ -1,0 +1,38 @@
+{
+  "es": {
+    "hero": {
+      "subtitle": "Categoría"
+    },
+    "productList": {
+      "buyButton": "Comprar en Vas al Super",
+      "viewButton": "Ver Producto"
+    },
+    "singleProduct": {
+      "subtitle": "Categoría",
+      "buyButton": "Comprar en Vas al Super",
+      "viewButton": "Ver Producto"
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "description": "Información médica importante para tu seguridad"
+    }
+  },
+  "en": {
+    "hero": {
+      "subtitle": "Category"
+    },
+    "productList": {
+      "buyButton": "Buy at Vas al Super",
+      "viewButton": "View Product"
+    },
+    "singleProduct": {
+      "subtitle": "Category",
+      "buyButton": "Buy at Vas al Super",
+      "viewButton": "View Product"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Important medical information for your safety"
+    }
+  }
+}

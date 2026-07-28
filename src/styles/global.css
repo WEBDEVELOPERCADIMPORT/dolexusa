@@ -1,1 +1,36 @@
 @import "tailwindcss";
+
+@theme {
+  --color-dolex-red: #d10029;
+  --color-dolex-red-hover: #b30023;
+  --color-vas-green: #2e8b57;
+  --color-vas-green-hover: #236b43;
+  --color-bg-light: #fafafa;
+  --color-text-main: #1a1a1a;
+  --color-text-muted: #4a4a4a;
+  --color-border-light: #e5e5e5;
+  --color-border-soft: #f0f0f0;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shadow: shadow 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes shadow {
+    0%, 100% {
+      transform: translateX(-50%) scale(1);
+      opacity: 0.4;
+    }
+    50% {
+      transform: translateX(-50%) scale(0.8);
+      opacity: 0.2;
+    }
+  }
+}

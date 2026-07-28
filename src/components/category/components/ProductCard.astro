@@ -1,0 +1,48 @@
+---
+import type { Product } from "../../../actions/products/getProductsByCategory.action";
+import type { Lang } from "../../../i18n/config.i18n";
+
+interface Props {
+  product: Product;
+  lang: Lang;
+  buyText?: string;
+  viewText?: string;
+}
+
+const { product, lang, buyText = "Comprar en Vas al Super", viewText = "Ver Producto" } = Astro.props;
+---
+
+<div class="flex flex-col bg-white border border-border-light rounded-xl overflow-hidden h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] group">
+    <div class="p-8 flex items-center justify-center h-[250px] bg-white">
+        <img src={product.image} alt={product.name} class="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+    </div>
+    
+    <div class="p-6 flex flex-col grow border-t border-[#f0f0f0]">
+        <span class="inline-block bg-[#fce7eb] text-dolex-red text-[0.8rem] font-bold px-3 py-1 rounded-full mb-4 self-start">{product.chip}</span>
+        <h3 class="text-xl font-bold text-dolex-red mb-2">{product.name}</h3>
+        <p class="text-[0.9rem] text-gray-500 leading-relaxed mb-6 line-clamp-3 grow">{product.description}</p>
+        
+        <ul class="list-none p-0 m-0 mb-6 flex flex-col gap-2">
+            {product.details.map((detail) => (
+                <li class="flex items-start gap-2 text-[0.85rem] text-[#4a4a4a]">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="shrink-0 mt-[0.1rem]">
+                        <path d="M9 16.2L4.8 12L3.4 13.4L9 19L21 7L19.6 5.6L9 16.2Z" fill="#d10029"/>
+                    </svg>
+                    {detail}
+                </li>
+            ))}
+        </ul>
+        
+        <div class="flex flex-col gap-3 mt-auto">
+            <a href={product.linkVasAlSuper} target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full p-3 bg-vas-green hover:bg-[#236b43] text-white rounded-lg font-bold text-[0.95rem] no-underline transition-colors duration-200 text-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 18C5.9 18 5.01 18.9 5.01 20C5.01 21.1 5.9 22 7 22C8.1 22 9 21.1 9 20C9 18.9 8.1 18 7 18ZM1 2V4H3L6.6 11.59L5.24 14.04C5.09 14.32 5 14.65 5 15C5 16.1 5.9 17 7 17H19V15H7.42C7.28 15 7.17 14.89 7.17 14.75L7.2 14.63L8.1 13H15.55C16.3 13 16.96 12.59 17.3 11.97L20.88 5.48C20.96 5.34 21 5.17 21 5C21 4.45 20.55 4 20 4H5.21L4.27 2H1ZM17 18C15.9 18 15.01 18.9 15.01 20C15.01 21.1 15.9 22 17 22C18.1 22 19 21.1 19 20C19 18.9 18.1 18 17 18Z" fill="currentColor"/>
+                </svg>
+                {buyText}
+            </a>
+            <a href={`/${lang}/${product.category}/${product.slug}`} class="flex items-center justify-center w-full p-3 bg-transparent text-dolex-red border-2 border-dolex-red hover:bg-[#fff0f3] rounded-lg font-bold text-[0.95rem] no-underline transition-colors duration-200 text-center">
+                {viewText}
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+---
+import type { Product } from "../../../actions/products/getProductsByCategory.action";
+import type { Category } from "../../../actions/categories/getCategories.action";
+import categoryContent from "../../../data/site-category-content.json";
+import type { Lang } from "../../../i18n/config.i18n";
+import ProductCard from "../components/ProductCard.astro";
+
+interface Props {
+    products: Product[];
+    category: Category;
+    lang: Lang;
+}
+
+const { products, category, lang } = Astro.props;
+const data = categoryContent[lang].productList;
+---
+
+<section class="bg-bg-light px-5 md:px-[8%] py-20">
+    <div class="max-w-[1200px] mx-auto">
+        <div class="text-center mb-16 flex flex-col items-center">
+            <h2 class="text-[2rem] font-bold mb-4" style={`color: ${category.color}`}>
+                Nuestra Línea {category.name}
+            </h2>
+            <div
+                class="w-[60px] h-1 rounded-sm"
+                style={`background-color: ${category.color}`}
+            >
+            </div>
+        </div>
+
+        <div class={`grid ${products.length >= 3 ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-2'} gap-8 justify-center`}>
+            {
+                products.map((product) => (
+                    <ProductCard
+                        product={product}
+                        lang={lang}
+                        buyText={data.buyButton}
+                        viewText={data.viewButton}
+                    />
+                ))
+            }
+        </div>
+    </div>
+</section>

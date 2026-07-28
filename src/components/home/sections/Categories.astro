@@ -1,0 +1,43 @@
+---
+import type { Lang } from "../../../i18n/config.i18n";
+import type { Category } from "../../../actions/categories/getCategories.action";
+import homeContent from "../../../data/site-home-content.json";
+import CategoryCard from "../components/CategoryCard.astro";
+
+interface Props {
+    lang: Lang;
+    categories: Category[];
+}
+
+const { lang, categories } = Astro.props;
+const data = homeContent[lang].categories;
+---
+
+<section class="bg-white px-5 md:px-[8%] py-16 md:py-20">
+    <div class="text-center max-w-[800px] mx-auto mb-16">
+        <span
+            class="text-dolex-red font-bold text-sm tracking-[0.1em] uppercase block mb-4"
+            >{data.subtitle}</span
+        >
+        <h2
+            class="text-4xl md:text-[2.5rem] font-extrabold text-text-main mb-6"
+        >
+            {data.title}
+        </h2>
+        <p class="text-lg text-gray-500 leading-relaxed">{data.description}</p>
+    </div>
+
+    <div
+        class="grid grid-cols-1 md:grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-8 max-w-[1400px] mx-auto"
+    >
+        {
+            categories.map((category) => (
+                <CategoryCard
+                    category={category}
+                    lang={lang}
+                    exploreText={lang === "es" ? "Explorar" : "Explore"}
+                />
+            ))
+        }
+    </div>
+</section>

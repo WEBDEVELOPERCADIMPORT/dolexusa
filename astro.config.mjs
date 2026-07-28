@@ -1,10 +1,15 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 import tailwindcss from '@tailwindcss/vite';
 
 import cloudflare from '@astrojs/cloudflare';
 import { LANGUAGES } from './src/i18n/config.i18n';
+
+import { getAllSitemapUrls } from './src/utils/sitemapUrls.ts';
+
+const uniqueUrls = getAllSitemapUrls();
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,5 +29,20 @@ export default defineConfig({
       fallbackType: 'redirect',
       redirectToDefaultLocale: true,
     }
-  }
+  },
+  integrations: [sitemap({
+    i18n: {
+      defaultLocale: 'es',
+      locales: {
+        en: 'en',
+        es: 'es',
+        fr: 'fr',
+        it: 'it'
+      },
+    },
+    changefreq: 'weekly',
+    priority: 0.7,
+    lastmod: new Date(),
+    customPages: uniqueUrls
+  })]
 });

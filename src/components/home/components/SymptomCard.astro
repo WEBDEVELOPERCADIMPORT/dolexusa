@@ -1,0 +1,73 @@
+---
+interface Props {
+  title: string;
+  productName: string;
+  productSlug: string;
+  lang: string;
+}
+
+const { title, productName, productSlug, lang } = Astro.props;
+---
+
+<a href={`/${lang}/dolex-${productSlug}`} class="symptom-card">
+    <div class="symptom-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM11 19.93C7.05 19.43 4 16.05 4 12C4 7.95 7.05 4.57 11 4.07V19.93ZM13 4.07C16.95 4.57 20 7.95 20 12C20 16.05 16.95 19.43 13 19.93V4.07Z" fill="currentColor"/>
+        </svg>
+    </div>
+    <div class="symptom-info">
+        <h4 class="symptom-title">{title}</h4>
+        <span class="symptom-product">{productName}</span>
+    </div>
+</a>
+
+<style>
+    .symptom-card {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        background-color: #ffffff;
+        padding: 1.5rem;
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        transition: transform 0.2s, box-shadow 0.2s;
+        border-left: 4px solid transparent;
+    }
+
+    .symptom-card:hover {
+        transform: translateX(5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border-left-color: #d10029;
+    }
+
+    .symptom-icon {
+        color: #d10029;
+        background-color: #ffe6eb;
+        padding: 1rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .symptom-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .symptom-title {
+        margin: 0;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #1a1a1a;
+    }
+
+    .symptom-product {
+        font-size: 0.9rem;
+        color: #d10029;
+        font-weight: 600;
+    }
+</style>

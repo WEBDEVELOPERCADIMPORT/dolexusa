@@ -1,0 +1,124 @@
+{
+  "es": {
+    "hero": {
+      "title": "Tu alivio de confianza, siempre contigo.",
+      "subtitle": "NUEVA PRESENTACIÓN FORTE",
+      "description": "Estamos en transformar el bienestar en tranquilidad. Descubre la potencia de nuestra fórmula avanzada diseñada para cada integrante de tu familia.",
+      "cta1": "Ver Productos",
+      "cta2": "Conoce el alivio"
+    },
+    "about": {
+      "title": "Trayectoria y Calidad Científica",
+      "description": "Por más de 4 décadas, Dolex ha sido el pilar de la salud y la medicina en general. Nuestra constante de transformar el alivio lo llevamos de un simple intento como es nuestro remedio.",
+      "features": [
+        {
+          "title": "Eficacia Clínica",
+          "description": "Resultados comprobados en la calidad de cada una de ellas."
+        },
+        {
+          "title": "Innovación Constante",
+          "description": "Nuevas fórmulas para un rápido y efectivo alivio."
+        }
+      ]
+    },
+    "categories": {
+      "title": "Soluciones Especializadas",
+      "subtitle": "NUESTRO PORTAFOLIO",
+      "description": "Con el fin de encontrar el alivio ideal para el bienestar familiar, hemos desarrollado las siguientes líneas."
+    },
+    "symptoms": {
+      "title": "¿Cuál es tu síntoma hoy?",
+      "description": "El alivio rápido para el dolor o la molestia",
+      "items": [
+        { "title": "Dolor de cabeza intenso", "product": "Dolex Forte" },
+        { "title": "Dolor de espalda o cuello", "product": "Dolex Flex" },
+        { "title": "Cólicos menstruales", "product": "Dolex Fem" },
+        { "title": "Fiebre o malestar infantil", "product": "Dolex Children" }
+      ]
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "items": [
+        {
+          "question": "¿Cómo tomar cada producto?",
+          "answer": "Consulte las indicaciones en el empaque de cada producto para obtener la dosis recomendada según la edad."
+        },
+        {
+          "question": "¿Qué hacer en caso de sobredosis?",
+          "answer": "Busque atención médica de inmediato o comuníquese con un centro de control de intoxicaciones."
+        },
+        {
+          "question": "¿A partir de qué edad se puede tomar Dolex Children?",
+          "answer": "Dolex Children está formulado para niños, pero consulte con su pediatra para la dosificación exacta según peso y edad."
+        }
+      ]
+    },
+    "places": {
+      "title": "Encuentra tu Dolex",
+      "description": "Descubre la sucursal o farmacia más cercana a tu ubicación actual.",
+      "placeholder": "Ingresa tu código postal",
+      "button": "Buscar Ahora"
+    }
+  },
+  "en": {
+    "hero": {
+      "title": "Your trusted relief, always with you.",
+      "subtitle": "NEW FORTE PRESENTATION",
+      "description": "We are transforming well-being into peace of mind. Discover the power of our advanced formula designed for every member of your family.",
+      "cta1": "View Products",
+      "cta2": "Know the relief"
+    },
+    "about": {
+      "title": "Trajectory and Scientific Quality",
+      "description": "For over 4 decades, Dolex has been the pillar of health and general medicine. Our constant transformation of relief takes it from a simple attempt to a true remedy.",
+      "features": [
+        {
+          "title": "Clinical Efficacy",
+          "description": "Proven results in the quality of each."
+        },
+        {
+          "title": "Constant Innovation",
+          "description": "New formulas for rapid and effective relief."
+        }
+      ]
+    },
+    "categories": {
+      "title": "Specialized Solutions",
+      "subtitle": "OUR PORTFOLIO",
+      "description": "To find the ideal relief for family well-being, we have developed the following lines."
+    },
+    "symptoms": {
+      "title": "What is your symptom today?",
+      "description": "Fast relief for pain or discomfort",
+      "items": [
+        { "title": "Severe headache", "product": "Dolex Forte" },
+        { "title": "Back or neck pain", "product": "Dolex Flex" },
+        { "title": "Menstrual cramps", "product": "Dolex Fem" },
+        { "title": "Fever or child discomfort", "product": "Dolex Children" }
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "How to take each product?",
+          "answer": "Check the instructions on each product packaging for the recommended dosage by age."
+        },
+        {
+          "question": "What to do in case of an overdose?",
+          "answer": "Seek medical attention immediately or contact a poison control center."
+        },
+        {
+          "question": "At what age can Dolex Children be taken?",
+          "answer": "Dolex Children is formulated for children, but consult your pediatrician for exact dosing based on weight and age."
+        }
+      ]
+    },
+    "places": {
+      "title": "Find your Dolex",
+      "description": "Discover the branch or pharmacy closest to your current location.",
+      "placeholder": "Enter your zip code",
+      "button": "Search Now"
+    }
+  }
+}

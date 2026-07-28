@@ -1,0 +1,38 @@
+{
+  "es": {
+    "breadcrumb": {
+      "home": "Inicio"
+    },
+    "productDetail": {
+      "categorySubtitle": "Categoría",
+      "buyButton": "Comprar en Vas al Super"
+    },
+    "recommended": {
+      "title": "Recomendados para ti",
+      "viewAll": "Ver todos los productos",
+      "viewDetails": "Ver Detalles"
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "description": "Encuentra respuestas rápidas sobre este producto."
+    }
+  },
+  "en": {
+    "breadcrumb": {
+      "home": "Home"
+    },
+    "productDetail": {
+      "categorySubtitle": "Category",
+      "buyButton": "Buy at Vas al Super"
+    },
+    "recommended": {
+      "title": "Recommended for you",
+      "viewAll": "View all products",
+      "viewDetails": "View Details"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Find quick answers about this product."
+    }
+  }
+}

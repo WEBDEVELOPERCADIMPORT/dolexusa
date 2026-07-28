@@ -1,0 +1,94 @@
+{
+    "products": [
+        {
+            "id": "1",
+            "name": "Dolex Forte 24 Tabletas",
+            "description": "Dolex Forte 24 Tabletas 400mg/65mg es un medicamento analgésico y antiinflamatorio utilizado para aliviar el dolor moderado a severo, como dolores de cabeza, migrañas, dolores musculares, dolores articulares y dolor menstrual.",
+            "image": "/images/dolex-forte/products/37-0085.png",
+            "chip": "Extra Fuerte",
+            "slug": "dolex-forte-24-tabletas",
+            "category": "dolex-forte",
+            "details": [
+                "Dolor de cabeza",
+                "Reduce la fiebre",
+                "Dolor muscular"
+            ],
+            "linkVasAlSuper": "https://vasalsuper.store/products/dolex%C2%AE-forte-forte-extra-de-dolor-para-aliviar-24-tabletas"
+        },
+        {
+            "id": "2",
+            "name": "Dolex Forte 50 Tabletas",
+            "description": "Dolex Advance 50 Tabletas 500mg es un medicamento analgésico y antiinflamatorio utilizado para aliviar el dolor moderado a severo, como dolores de cabeza, migrañas, dolores musculares, dolores articulares y dolor menstrual.",
+            "image": "/images/dolex-forte/products/37-0076.png",
+            "chip": "Extra Fuerte",
+            "slug": "dolex-forte-50-tabletas",
+            "category": "dolex-forte",
+            "details": [
+                "Alivio rápido del dolor menstrual",
+                "Reduce el malestar y la inflamación",
+                "Ayuda a recuperar tu rutina diaria"
+            ],
+            "linkVasAlSuper": "https://vasalsuper.store/products/dolex-forte-display-50x2-tabs"
+        },
+        {
+            "id": "3",
+            "name": "Dolex Fem 24 Caplets",
+            "description": "No permitas que los cólicos y el malestar transformen esos días del mes en un obstáculo. DOLEX FEM es el aliado terapéutico diseñado específicamente para la mujer moderna, ofreciendo una fórmula de acción dirigida que combate de manera rápida y efectiva los dolores menstruales más intensos. Su presentación en blister de 24 caplets te asegura tener a la mano el alivio necesario para mantener tu ritmo de vida con total normalidad y sin interrupciones.",
+            "image": "/images/dolex-fem/products/37-0127.png",
+            "chip": "Alivio Menstrual",
+            "slug": "dolex-fem-blister-24-caplets-menstrual-completo",
+            "category": "dolex-fem",
+            "details": [
+                "Alivio rápido del dolor menstrual",
+                "Reduce el malestar y la inflamación",
+                "Ayuda a recuperar tu rutina diaria"
+            ],
+            "linkVasAlSuper": "https://vasalsuper.store/products/dolex%C2%AE-fem-blister-24-caplets-menstrual-completo?_pos=1&_sid=f67e16157&_ss=r"
+        },
+        {
+            "id": "4",
+            "name": "Dolex® Flex ibuprofeno 20 tabletas 200 mg",
+            "description": "Dolex® Flex 20 tabletas 200 mg es un medicamento analgésico y antiinflamatorio utilizado para aliviar el dolor moderado a severo, como dolores de cabeza, migrañas, dolores musculares, dolores articulares y dolor menstrual.",
+            "image": "/images/dolex-flex/products/37-0116.png",
+            "chip": "Flex",
+            "slug": "dolex-flex-ibuprofeno-20-tabletas-200-mg",
+            "category": "dolex-flex",
+            "details": [
+                "Alivia el dolor",
+                "Reduce la fiebre",
+                "Alivia el malestar general"
+            ],
+            "linkVasAlSuper": "https://vasalsuper.store/products/dolex%C2%AE-flex-ibuprofeno-20-tabletas-200-mg?pr_prod_strat=pinned&pr_rec_id=9f6ec5070&pr_rec_pid=7350664462561&pr_ref_pid=8247292952801&pr_seq=uniform"
+        },
+        {
+            "id": "5",
+            "name": "Dolex® Dolor Y Fiebre Suspensión Oral 4 Fl Oz",
+            "description": "Protege el bienestar de tu hogar y mantén a raya el malestar con Dolex® Dolor Y Fiebre Suspensión Oral. Esta presentación líquida de 4 Fl Oz es la aliada perfecta para el botiquín familiar, diseñada específicamente para ofrecer un alivio rápido, efectivo y de fácil ingesta contra los síntomas del resfriado, los dolores comunes y los episodios de fiebre alta.",
+            "image": "/images/dolex-children/products/14-0074.png",
+            "chip": "Children",
+            "slug": "dolex-dolor-y-fiebre-suspensión-oral-4-fl-oz",
+            "category": "dolex-children",
+            "details": [
+                "Alivia el dolor",
+                "Reduce la fiebre",
+                "Alivia el malestar general"
+            ],
+            "linkVasAlSuper": "https://vasalsuper.store/products/dolex%C2%AE-dolor-y-fiebre-suspension-oral-4-fl-oz?pr_prod_strat=pinned&pr_rec_id=ffaf5c4c6&pr_rec_pid=8247292788961&pr_ref_pid=7350664462561&pr_seq=uniform"
+        },
+        {
+            "id": "6",
+            "name": "Dolex® Suspensión Oral De Ibuprofeno Para Niños 4 Fl Oz",
+            "description": "Cuando los más pequeños de la casa se sienten mal, el bienestar de todo el hogar se detiene. Dolex® Suspensión Oral para Niños es la solución médica confiable diseñada específicamente para aliviar el dolor y reducir la fiebre de manera rápida y efectiva. Con una fórmula segura a base de ibuprofeno, este medicamento actúa directamente sobre el malestar, devolviéndoles la sonrisa, el juego y el descanso reparador que necesitan para recuperarse.",
+            "image": "/images/dolex-children/products/37-0115.png",
+            "chip": "Children",
+            "slug": "dolex-suspension-oral-de-ibuprofeno-para-ninos-4-fl-oz",
+            "category": "dolex-children",
+            "details": [
+                "Alivia el dolor",
+                "Reduce la fiebre",
+                "Alivia el malestar general"
+            ],
+            "linkVasAlSuper": "https://vasalsuper.store/products/dolex%C2%AE-suspension-oral-de-ibuprofeno-para-ninos-4-fl-oz?pr_prod_strat=pinned&pr_rec_id=64124e7f7&pr_rec_pid=8247292854497&pr_ref_pid=8247292788961&pr_seq=uniform"
+        }
+    ]
+}
