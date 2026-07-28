@@ -3,6 +3,7 @@ import type { Lang } from "../../../i18n/config.i18n";
 import type { Category } from "../../../actions/categories/getCategories.action";
 import homeContent from "../../../data/site-home-content.json";
 import CategoryCard from "../components/CategoryCard.astro";
+import { FadeInText } from "@astroanimate/core";
 
 interface Props {
     lang: Lang;
@@ -15,16 +16,30 @@ const data = homeContent[lang].categories;
 
 <section class="bg-white px-5 md:px-[8%] py-16 md:py-20">
     <div class="text-center max-w-[800px] mx-auto mb-16">
-        <span
+        <FadeInText
+            as="span"
+            enhance={true}
+            duration={0.6}
             class="text-dolex-red font-bold text-sm tracking-[0.1em] uppercase block mb-4"
-            >{data.subtitle}</span
+            >{data.subtitle}</FadeInText
         >
-        <h2
+        <FadeInText
+            as="h2"
+            enhance={true}
+            delay={0.1}
+            duration={0.6}
             class="text-4xl md:text-[2.5rem] font-extrabold text-text-main mb-6"
         >
             {data.title}
-        </h2>
-        <p class="text-lg text-gray-500 leading-relaxed">{data.description}</p>
+        </FadeInText>
+        <FadeInText
+            as="p"
+            enhance={true}
+            delay={0.2}
+            duration={0.6}
+            class="text-lg text-gray-500 leading-relaxed"
+            >{data.description}</FadeInText
+        >
     </div>
 
     <div

@@ -16,10 +16,10 @@ const data = productContent[lang].productDetail;
 
 <section class="bg-bg-light px-5 md:px-[8%] py-16">
     <div
-        class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20"
+        class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-start gap-12 md:gap-20 relative"
     >
         <div
-            class="flex-1 w-full bg-white p-8 md:p-16 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] flex justify-center items-center"
+            class="flex-1 w-full bg-white p-8 md:p-16 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] flex justify-center items-center md:sticky md:top-32"
         >
             <img
                 src={product.image}
@@ -43,9 +43,22 @@ const data = productContent[lang].productDetail;
                 {product.name}
             </h1>
 
-            <p class="text-[1.125rem] text-text-muted leading-relaxed mb-10">
-                {product.description}
-            </p>
+            <div class="mb-10">
+                <p
+                    id="product-desc"
+                    class="text-[1.125rem] text-text-muted leading-relaxed line-clamp-3 transition-all duration-300 whitespace-pre-line"
+                >
+                    {product.description}
+                </p>
+                <button
+                    id="toggle-desc-btn"
+                    class="text-dolex-red font-semibold mt-2 hover:underline cursor-pointer bg-transparent border-none p-0 text-[1rem] hidden"
+                    data-read-more={data.readMore}
+                    data-read-less={data.readLess}
+                >
+                    {data.readMore}
+                </button>
+            </div>
 
             <div class="flex flex-col gap-4 mb-12">
                 {
@@ -99,3 +112,34 @@ const data = productContent[lang].productDetail;
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const desc = document.getElementById("product-desc");
+        const btn = document.getElementById("toggle-desc-btn");
+
+        if (desc && btn) {
+            // Check if text is clamped
+            if (
+                desc.scrollHeight > desc.clientHeight ||
+                desc.classList.contains("line-clamp-none")
+            ) {
+                btn.classList.remove("hidden");
+
+                btn.addEventListener("click", () => {
+                    const isExpanded =
+                        desc.classList.contains("line-clamp-none");
+                    if (isExpanded) {
+                        desc.classList.remove("line-clamp-none");
+                        desc.classList.add("line-clamp-3");
+                        btn.textContent = btn.dataset.readMore || "Leer más";
+                    } else {
+                        desc.classList.remove("line-clamp-3");
+                        desc.classList.add("line-clamp-none");
+                        btn.textContent = btn.dataset.readLess || "Leer menos";
+                    }
+                });
+            }
+        }
+    });
+</script>

@@ -5,7 +5,9 @@
     },
     "productDetail": {
       "categorySubtitle": "Categoría",
-      "buyButton": "Comprar en Vas al Super"
+      "buyButton": "Comprar en Vas al Super",
+      "readMore": "Leer más",
+      "readLess": "Leer menos"
     },
     "recommended": {
       "title": "Recomendados para ti",
@@ -23,7 +25,9 @@
     },
     "productDetail": {
       "categorySubtitle": "Category",
-      "buyButton": "Buy at Vas al Super"
+      "buyButton": "Buy at Vas al Super",
+      "readMore": "Read more",
+      "readLess": "Read less"
     },
     "recommended": {
       "title": "Recommended for you",

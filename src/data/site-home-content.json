@@ -5,7 +5,9 @@
       "subtitle": "NUEVA PRESENTACIÓN FORTE",
       "description": "Estamos en transformar el bienestar en tranquilidad. Descubre la potencia de nuestra fórmula avanzada diseñada para cada integrante de tu familia.",
       "cta1": "Ver Productos",
-      "cta2": "Conoce el alivio"
+      "cta2": "Conoce el alivio",
+      "btnViewMore": "Ver más",
+      "btnFindStore": "Buscar en tienda"
     },
     "about": {
       "title": "Trayectoria y Calidad Científica",
@@ -66,7 +68,9 @@
       "subtitle": "NEW FORTE PRESENTATION",
       "description": "We are transforming well-being into peace of mind. Discover the power of our advanced formula designed for every member of your family.",
       "cta1": "View Products",
-      "cta2": "Know the relief"
+      "cta2": "Know the relief",
+      "btnViewMore": "View more",
+      "btnFindStore": "Find in store"
     },
     "about": {
       "title": "Trajectory and Scientific Quality",

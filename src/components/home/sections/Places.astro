@@ -93,9 +93,15 @@ const data = homeContent[lang].places;
     import { actions } from "astro:actions";
 
     document.addEventListener("DOMContentLoaded", () => {
-        const form = document.getElementById("places-search-form") as HTMLFormElement | null;
-        const input = document.getElementById("zipcode-input") as HTMLInputElement | null;
-        const results = document.getElementById("places-results") as HTMLDivElement | null;
+        const form = document.getElementById(
+            "places-search-form",
+        ) as HTMLFormElement | null;
+        const input = document.getElementById(
+            "zipcode-input",
+        ) as HTMLInputElement | null;
+        const results = document.getElementById(
+            "places-results",
+        ) as HTMLDivElement | null;
 
         const handleHashChange = () => {
             const hash = window.location.hash;
@@ -142,9 +148,12 @@ const data = homeContent[lang].places;
                     const mapQuery = matchedPlaces[0].address;
                     const mapEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`;
 
-                    const iframe = document.getElementById("google-map-iframe") as HTMLIFrameElement | null;
-                    const placeholder =
-                        document.getElementById("map-placeholder") as HTMLDivElement | null;
+                    const iframe = document.getElementById(
+                        "google-map-iframe",
+                    ) as HTMLIFrameElement | null;
+                    const placeholder = document.getElementById(
+                        "map-placeholder",
+                    ) as HTMLDivElement | null;
                     if (iframe && placeholder) {
                         iframe.src = mapEmbedSrc;
                         iframe.classList.remove("hidden");
@@ -156,9 +165,12 @@ const data = homeContent[lang].places;
                             No stores found for zipcode ${zipcode}. Try 77500 or 77710.
                         </div>
                     `;
-                    const iframe = document.getElementById("google-map-iframe") as HTMLIFrameElement | null;
-                    const placeholder =
-                        document.getElementById("map-placeholder") as HTMLDivElement | null;
+                    const iframe = document.getElementById(
+                        "google-map-iframe",
+                    ) as HTMLIFrameElement | null;
+                    const placeholder = document.getElementById(
+                        "map-placeholder",
+                    ) as HTMLDivElement | null;
                     if (iframe && placeholder) {
                         iframe.classList.add("hidden");
                         placeholder.classList.remove("hidden");

@@ -10,7 +10,9 @@
     "singleProduct": {
       "subtitle": "Categoría",
       "buyButton": "Comprar en Vas al Super",
-      "viewButton": "Ver Producto"
+      "viewButton": "Ver Producto",
+      "readMore": "Leer más",
+      "readLess": "Leer menos"
     },
     "faq": {
       "title": "Preguntas Frecuentes",
@@ -28,7 +30,9 @@
     "singleProduct": {
       "subtitle": "Category",
       "buyButton": "Buy at Vas al Super",
-      "viewButton": "View Product"
+      "viewButton": "View Product",
+      "readMore": "Read more",
+      "readLess": "Read less"
     },
     "faq": {
       "title": "Frequently Asked Questions",

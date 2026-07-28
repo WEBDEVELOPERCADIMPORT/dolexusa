@@ -12,18 +12,32 @@ interface Props {
 
 const { product, category, lang } = Astro.props;
 const data = categoryContent[lang].singleProduct;
+const singleProductId = `single-product-${product.id}`;
 ---
 
 <section class="bg-white px-5 md:px-[8%] py-16 md:py-20">
-    <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
-        <div class="flex-1 w-full bg-gray-50 p-8 md:p-16 rounded-[24px] flex justify-center items-center">
+    <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-start gap-12 md:gap-20 relative">
+        <div class="flex-1 w-full bg-gray-50 p-8 md:p-16 rounded-[24px] flex justify-center items-center md:sticky md:top-32">
             <img src={product.image} alt={product.name} class="max-w-full h-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.15)]" />
         </div>
         
         <div class="flex-1 w-full md:max-w-[600px]">
             <span class="font-bold text-[0.85rem] uppercase tracking-[0.1em] mb-2 block" style={`color: ${category.color}`}>{data.subtitle}</span>
             <h2 class="text-4xl md:text-[2.5rem] font-extrabold mb-6 leading-tight" style={`color: ${category.color}`}>{product.name}</h2>
-            <p class="text-[1.1rem] text-text-muted leading-relaxed mb-10">{product.description}</p>
+            
+            <div class="mb-10 flex flex-col">
+                <p id={`desc-${singleProductId}`} class="single-product-desc text-[1.1rem] text-text-muted leading-relaxed line-clamp-3 whitespace-pre-line m-0 transition-all duration-300">
+                    {product.description}
+                </p>
+                <button
+                    class="single-product-toggle text-dolex-red font-semibold mt-2 hover:underline cursor-pointer bg-transparent border-none p-0 text-[1rem] text-left hidden self-start"
+                    data-target={`desc-${singleProductId}`}
+                    data-read-more={data.readMore}
+                    data-read-less={data.readLess}
+                >
+                    {data.readMore}
+                </button>
+            </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 {product.details.map((detail) => (
@@ -52,3 +66,39 @@ const data = categoryContent[lang].singleProduct;
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const toggles = document.querySelectorAll(".single-product-toggle");
+        
+        toggles.forEach((btn: Element) => {
+            const button = btn as HTMLButtonElement;
+            const targetId = button.dataset.target;
+            if (!targetId) return;
+            
+            const desc = document.getElementById(targetId);
+            if (!desc) return;
+            
+            // Check if text is clamped
+            if (desc.scrollHeight > desc.clientHeight || desc.classList.contains("line-clamp-none")) {
+                button.classList.remove("hidden");
+                
+                if (!button.dataset.listenerAdded) {
+                    button.dataset.listenerAdded = "true";
+                    button.addEventListener("click", () => {
+                        const isExpanded = desc.classList.contains("line-clamp-none");
+                        if (isExpanded) {
+                            desc.classList.remove("line-clamp-none");
+                            desc.classList.add("line-clamp-3");
+                            button.textContent = button.dataset.readMore || "Leer más";
+                        } else {
+                            desc.classList.remove("line-clamp-3");
+                            desc.classList.add("line-clamp-none");
+                            button.textContent = button.dataset.readLess || "Leer menos";
+                        }
+                    });
+                }
+            }
+        });
+    });
+</script>

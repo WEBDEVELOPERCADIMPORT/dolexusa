@@ -34,9 +34,10 @@ const categories = categoriesResult?.data || [];
     image="/images/hero/home/hero_1.home.png"
 >
     <main>
-        <Hero lang={lang} />
-        <About lang={lang} />
+        <Hero lang={lang} categories={categories} />
         <Categories lang={lang} categories={categories} />
+
+        <About lang={lang} />
         <Symptoms lang={lang} />
         <Places lang={lang} />
         <FAQ lang={lang} />

@@ -6,7 +6,7 @@ import productContent from "../../../data/site-product-content.json";
 
 interface Props {
     category: Category;
-    product: Product;
+    product?: Product;
     lang: Lang;
 }
 
@@ -20,12 +20,20 @@ const data = productContent[lang].breadcrumb;
             <a href={`/${lang}`} class="text-gray-500 no-underline transition-colors duration-200 hover:text-dolex-red">{data.home}</a>
         </li>
         <li class="flex items-center text-[0.9rem] text-[#999] text-[0.8rem]">/</li>
-        <li class="flex items-center text-[0.9rem]">
-            <a href={`/${lang}/${category.slug}`} class="text-gray-500 no-underline transition-colors duration-200 hover:text-dolex-red">{category.name}</a>
+        <li class="flex items-center text-[0.9rem]" aria-current={product ? undefined : "page"}>
+            {product ? (
+                <a href={`/${lang}/${category.slug}`} class="text-gray-500 no-underline transition-colors duration-200 hover:text-dolex-red">{category.name}</a>
+            ) : (
+                <span class="text-text-main font-semibold">{category.name}</span>
+            )}
         </li>
-        <li class="flex items-center text-[0.9rem] text-[#999] text-[0.8rem]">/</li>
-        <li class="flex items-center text-[0.9rem]" aria-current="page">
-            <span class="text-text-main font-semibold">{product.name}</span>
-        </li>
+        {product && (
+            <>
+                <li class="flex items-center text-[0.9rem] text-[#999] text-[0.8rem]">/</li>
+                <li class="flex items-center text-[0.9rem]" aria-current="page">
+                    <span class="text-text-main font-semibold">{product.name}</span>
+                </li>
+            </>
+        )}
     </ol>
 </nav>

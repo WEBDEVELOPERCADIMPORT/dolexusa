@@ -2,6 +2,7 @@
 import type { Lang } from "../../../i18n/config.i18n";
 import homeContent from "../../../data/site-home-content.json";
 import SymptomCard from "../components/SymptomCard.astro";
+import { FadeInText } from "@astroanimate/core";
 
 interface Props {
   lang: Lang;
@@ -22,8 +23,8 @@ const productMap: Record<string, string> = {
 <section class="bg-gray-100 px-5 md:px-[8%] py-16 md:py-20 border-t border-border-light">
     <div class="max-w-[1200px] mx-auto">
         <div class="text-center mb-12">
-            <h2 class="text-4xl md:text-[2.5rem] font-extrabold text-text-main mb-2">{data.title}</h2>
-            <p class="text-lg text-gray-500">{data.description}</p>
+            <FadeInText as="h2" enhance={true} duration={0.6} class="text-4xl md:text-[2.5rem] font-extrabold text-text-main mb-2">{data.title}</FadeInText>
+            <FadeInText as="p" enhance={true} delay={0.1} duration={0.6} class="text-lg text-gray-500">{data.description}</FadeInText>
         </div>
         
         <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6">
