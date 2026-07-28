@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "generate-types": "wrangler types"
+    "generate-types": "wrangler types",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@astroanimate/core": "^0.1.2",

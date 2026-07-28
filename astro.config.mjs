@@ -15,12 +15,7 @@ const uniqueUrls = getAllSitemapUrls();
 export default defineConfig({
   output: 'server',
   vite: {
-    plugins: [tailwindcss()],
-    resolve: {
-      alias: {
-        '../../internal/dropdown': '../../internal/Dropdown',
-      }
-    }
+    plugins: [tailwindcss()]
   },
 
   site: 'https://dolexusa.com',
