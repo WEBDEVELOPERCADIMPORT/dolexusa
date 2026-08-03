@@ -10,6 +10,7 @@ export interface Product {
     chip: string;
     slug: string;
     category: string;
+    sku: string;
     details: string[];
     linkVasAlSuper: string;
 }

@@ -8,6 +8,7 @@
             "chip": "Extra Fuerte",
             "slug": "dolex-forte-24-tabletas",
             "category": "dolex-forte",
+            "sku": "37-0085",
             "details": [
                 "Dolor de cabeza",
                 "Reduce la fiebre",
@@ -23,6 +24,7 @@
             "chip": "Extra Fuerte",
             "slug": "dolex-forte-50-tabletas",
             "category": "dolex-forte",
+            "sku": "37-0076",
             "details": [
                 "Alivio rápido del dolor menstrual",
                 "Reduce el malestar y la inflamación",
@@ -38,6 +40,7 @@
             "chip": "Alivio Menstrual",
             "slug": "dolex-fem-blister-24-caplets-menstrual-completo",
             "category": "dolex-fem",
+            "sku": "37-0127",
             "details": [
                 "Alivio rápido del dolor menstrual",
                 "Reduce el malestar y la inflamación",
@@ -53,6 +56,7 @@
             "chip": "Flex",
             "slug": "dolex-flex-ibuprofeno-20-tabletas-200-mg",
             "category": "dolex-flex",
+            "sku": "37-0116",
             "details": [
                 "Alivia el dolor",
                 "Reduce la fiebre",
@@ -68,6 +72,7 @@
             "chip": "Children",
             "slug": "dolex-dolor-y-fiebre-suspensión-oral-4-fl-oz",
             "category": "dolex-children",
+            "sku": "14-0074",
             "details": [
                 "Alivia el dolor",
                 "Reduce la fiebre",
@@ -83,6 +88,7 @@
             "chip": "Children",
             "slug": "dolex-suspension-oral-de-ibuprofeno-para-ninos-4-fl-oz",
             "category": "dolex-children",
+            "sku": "37-0115",
             "details": [
                 "Alivia el dolor",
                 "Reduce la fiebre",

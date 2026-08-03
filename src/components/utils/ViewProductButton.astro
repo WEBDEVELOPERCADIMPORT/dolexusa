@@ -1,0 +1,30 @@
+---
+import type { Product } from "../../actions/products/getProductsByCategory.action";
+
+interface Props {
+  href: string;
+  text?: string;
+  class?: string;
+  [key: string]: any;
+  product: Product;
+}
+
+const {
+  href,
+  text = "Ver Producto",
+  class: className = "",
+  product,
+  ...rest
+} = Astro.props;
+---
+
+<a
+  data-umami-event="Click View Product"
+  data-umami-event-product-name={product.name}
+  data-umami-event-product-sku={product.sku}
+  href={href}
+  class={`flex items-center justify-center w-full p-3 bg-transparent text-dolex-red border-2 border-dolex-red hover:bg-[#fff0f3] rounded-lg font-bold text-[0.95rem] no-underline transition-colors duration-200 text-center ${className}`}
+  {...rest}
+>
+  {text}
+</a>

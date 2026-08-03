@@ -3,11 +3,12 @@ import type { Product } from "../../../actions/products/getProductsByCategory.ac
 import type { Category } from "../../../actions/categories/getCategories.action";
 import categoryContent from "../../../data/site-category-content.json";
 import type { Lang } from "../../../i18n/config.i18n";
-
+import BuyStoreButton from "../../utils/BuyStoreButton.astro";
+import ViewProductButton from "../../utils/ViewProductButton.astro";
 interface Props {
-  product: Product;
-  category: Category;
-  lang: Lang;
+    product: Product;
+    category: Category;
+    lang: Lang;
 }
 
 const { product, category, lang } = Astro.props;
@@ -16,17 +17,36 @@ const singleProductId = `single-product-${product.id}`;
 ---
 
 <section class="bg-white px-5 md:px-[8%] py-16 md:py-20">
-    <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-start gap-12 md:gap-20 relative">
-        <div class="flex-1 w-full bg-gray-50 p-8 md:p-16 rounded-[24px] flex justify-center items-center md:sticky md:top-32">
-            <img src={product.image} alt={product.name} class="max-w-full h-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.15)]" />
+    <div
+        class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-start gap-12 md:gap-20 relative"
+    >
+        <div
+            class="flex-1 w-full bg-gray-50 p-8 md:p-16 rounded-[24px] flex justify-center items-center md:sticky md:top-32"
+        >
+            <img
+                src={product.image}
+                alt={product.name}
+                class="max-w-full h-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.15)]"
+            />
         </div>
-        
+
         <div class="flex-1 w-full md:max-w-[600px]">
-            <span class="font-bold text-[0.85rem] uppercase tracking-[0.1em] mb-2 block" style={`color: ${category.color}`}>{data.subtitle}</span>
-            <h2 class="text-4xl md:text-[2.5rem] font-extrabold mb-6 leading-tight" style={`color: ${category.color}`}>{product.name}</h2>
-            
+            <span
+                class="font-bold text-[0.85rem] uppercase tracking-[0.1em] mb-2 block"
+                style={`color: ${category.color}`}>{data.subtitle}</span
+            >
+            <h2
+                class="text-4xl md:text-[2.5rem] font-extrabold mb-6 leading-tight"
+                style={`color: ${category.color}`}
+            >
+                {product.name}
+            </h2>
+
             <div class="mb-10 flex flex-col">
-                <p id={`desc-${singleProductId}`} class="single-product-desc text-[1.1rem] text-text-muted leading-relaxed line-clamp-3 whitespace-pre-line m-0 transition-all duration-300">
+                <p
+                    id={`desc-${singleProductId}`}
+                    class="single-product-desc text-[1.1rem] text-text-muted leading-relaxed line-clamp-3 whitespace-pre-line m-0 transition-all duration-300"
+                >
                     {product.description}
                 </p>
                 <button
@@ -38,30 +58,51 @@ const singleProductId = `single-product-${product.id}`;
                     {data.readMore}
                 </button>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                {product.details.map((detail) => (
-                    <div class="flex items-center gap-3">
-                        <div class="bg-black/5 p-2 rounded-full flex items-center justify-center" style={`color: ${category.color}`}>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 16.2L4.8 12L3.4 13.4L9 19L21 7L19.6 5.6L9 16.2Z" fill="currentColor"/>
-                            </svg>
+                {
+                    product.details.map((detail) => (
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="bg-black/5 p-2 rounded-full flex items-center justify-center"
+                                style={`color: ${category.color}`}
+                            >
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M9 16.2L4.8 12L3.4 13.4L9 19L21 7L19.6 5.6L9 16.2Z"
+                                        fill="currentColor"
+                                    />
+                                </svg>
+                            </div>
+                            <span class="font-semibold text-text-main text-[0.95rem]">
+                                {detail}
+                            </span>
                         </div>
-                        <span class="font-semibold text-text-main text-[0.95rem]">{detail}</span>
-                    </div>
-                ))}
+                    ))
+                }
             </div>
-            
+
             <div class="flex flex-col md:flex-row gap-4 md:gap-6">
-                <a href={product.linkVasAlSuper} target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-bold text-white no-underline transition-opacity duration-200 hover:opacity-90" style={`background-color: ${category.color}`}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 18C5.9 18 5.01 18.9 5.01 20C5.01 21.1 5.9 22 7 22C8.1 22 9 21.1 9 20C9 18.9 8.1 18 7 18ZM1 2V4H3L6.6 11.59L5.24 14.04C5.09 14.32 5 14.65 5 15C5 16.1 5.9 17 7 17H19V15H7.42C7.28 15 7.17 14.89 7.17 14.75L7.2 14.63L8.1 13H15.55C16.3 13 16.96 12.59 17.3 11.97L20.88 5.48C20.96 5.34 21 5.17 21 5C21 4.45 20.55 4 20 4H5.21L4.27 2H1ZM17 18C15.9 18 15.01 18.9 15.01 20C15.01 21.1 15.9 22 17 22C18.1 22 19 21.1 19 20C19 18.9 18.1 18 17 18Z" fill="currentColor"/>
-                    </svg>
-                    {data.buyButton}
-                </a>
-                <a href={`/${lang}/${product.category}/${product.slug}`} class="flex items-center justify-center px-8 py-4 rounded-lg font-bold bg-transparent border-2 no-underline transition-colors duration-200 hover:bg-black/5" style={`color: ${category.color}; border-color: ${category.color}`}>
-                    {data.viewButton}
-                </a>
+                <BuyStoreButton
+                    href={product.linkVasAlSuper}
+                    text={data.buyButton}
+                    style={`background-color: ${category.color}`}
+                    class="!w-auto px-8 py-4 bg-transparent hover:bg-transparent"
+                    product={product}
+                />
+                <ViewProductButton
+                    href={`/${lang}/${product.category}/${product.slug}`}
+                    text={data.viewButton}
+                    style={`color: ${category.color}; border-color: ${category.color}`}
+                    class="!w-auto px-8 py-4 bg-transparent hover:bg-black/5"
+                    product={product}
+                />
             </div>
         </div>
     </div>
@@ -70,31 +111,37 @@ const singleProductId = `single-product-${product.id}`;
 <script>
     document.addEventListener("astro:page-load", () => {
         const toggles = document.querySelectorAll(".single-product-toggle");
-        
+
         toggles.forEach((btn: Element) => {
             const button = btn as HTMLButtonElement;
             const targetId = button.dataset.target;
             if (!targetId) return;
-            
+
             const desc = document.getElementById(targetId);
             if (!desc) return;
-            
+
             // Check if text is clamped
-            if (desc.scrollHeight > desc.clientHeight || desc.classList.contains("line-clamp-none")) {
+            if (
+                desc.scrollHeight > desc.clientHeight ||
+                desc.classList.contains("line-clamp-none")
+            ) {
                 button.classList.remove("hidden");
-                
+
                 if (!button.dataset.listenerAdded) {
                     button.dataset.listenerAdded = "true";
                     button.addEventListener("click", () => {
-                        const isExpanded = desc.classList.contains("line-clamp-none");
+                        const isExpanded =
+                            desc.classList.contains("line-clamp-none");
                         if (isExpanded) {
                             desc.classList.remove("line-clamp-none");
                             desc.classList.add("line-clamp-3");
-                            button.textContent = button.dataset.readMore || "Leer más";
+                            button.textContent =
+                                button.dataset.readMore || "Leer más";
                         } else {
                             desc.classList.remove("line-clamp-3");
                             desc.classList.add("line-clamp-none");
-                            button.textContent = button.dataset.readLess || "Leer menos";
+                            button.textContent =
+                                button.dataset.readLess || "Leer menos";
                         }
                     });
                 }
