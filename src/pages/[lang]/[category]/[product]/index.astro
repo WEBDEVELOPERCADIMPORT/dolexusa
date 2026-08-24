@@ -2,6 +2,7 @@
 import Layout from "../../../../layouts/Layout.astro";
 import type { Lang } from "../../../../i18n/config.i18n";
 import { actions } from "astro:actions";
+import { ui } from "../../../../i18n/ui.i18n";
 
 import Breadcrumb from "../../../../components/product/sections/Breadcrumb.astro";
 import ProductDetail from "../../../../components/product/sections/ProductDetail.astro";
@@ -15,12 +16,12 @@ const productSlug = Astro.params.product as string;
 // Fetch Data
 const { data: categoryResponse } = await Astro.callAction(
     actions.getCategoryBySlug,
-    { slug: categorySlug },
+    { slug: categorySlug, lang },
 );
 const category = categoryResponse?.data;
 const { data: productResponse } = await Astro.callAction(
     actions.getProductBySlug,
-    { slug: productSlug },
+    { slug: productSlug, lang },
 );
 const product = productResponse?.data;
 
@@ -44,10 +45,12 @@ const schema = {
     },
     category: category.name,
 };
+
+const title = `${product.name} | Dolex`;
 ---
 
 <Layout
-    title={`${product.name} | Dolex`}
+    title={title}
     lang={lang}
     description={product.description}
     image={product.image}

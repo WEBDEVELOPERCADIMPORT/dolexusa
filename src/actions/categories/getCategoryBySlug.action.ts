@@ -6,9 +6,11 @@ import type { Category } from "./getCategories.action";
 export const getCategoryBySlug = defineAction({
     input: z.object({
         slug: z.string(),
+        lang: z.enum(["es", "en"]).default("es")
     }),
-    handler: async ({ slug }): Promise<{ message: string, data: Category | null }> => {
-        const data = content.categories as Category[];
+    handler: async ({ slug, lang }): Promise<{ message: string, data: Category | null }> => {
+        // @ts-ignore
+        const data = content[lang].categories as Category[];
         const category = data.find(c => c.slug === slug) || null;
 
         if (!category) {

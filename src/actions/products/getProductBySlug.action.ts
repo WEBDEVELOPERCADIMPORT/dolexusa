@@ -6,9 +6,11 @@ import type { Product } from "./getProductsByCategory.action";
 export const getProductBySlug = defineAction({
     input: z.object({
         slug: z.string(),
+        lang: z.enum(["es", "en"]).default("es")
     }),
-    handler: async ({ slug }): Promise<{ message: string, data: Product | null }> => {
-        const data = content.products as Product[];
+    handler: async ({ slug, lang }): Promise<{ message: string, data: Product | null }> => {
+        // @ts-ignore
+        const data = content[lang].products as Product[];
         const product = data.find(p => p.slug === slug) || null;
 
         if (!product) {

@@ -14,7 +14,7 @@ const symptoms = homeContent[lang].symptoms.items;
 
 const getCategoryDescription = (catName: string) => {
     const found = symptoms.find((s) => s.product === catName);
-    return found ? found.title : "";
+    return found ? found.heroDescription : "";
 };
 ---
 
@@ -30,7 +30,7 @@ const getCategoryDescription = (catName: string) => {
 
                     <div class="slide-content relative z-20 w-full px-5 md:px-[8%] flex flex-col items-center md:items-end text-center md:text-right mt-10 md:mt-0">
                         <h2
-                            class="text-5xl md:text-7xl font-black uppercase mb-2 tracking-tight"
+                            class="text-5xl md:text-7xl font-black uppercase mb-2 tracking-tight md:hidden"
                             style="color: #ffe600; -webkit-text-stroke: 1px #d10029; text-shadow: 3px 3px 0 #cc5a00, 4px 4px 5px rgba(0,0,0,0.5);"
                         >
                             {cat.name}

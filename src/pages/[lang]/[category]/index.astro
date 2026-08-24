@@ -2,6 +2,7 @@
 import Layout from "../../../layouts/Layout.astro";
 import type { Lang } from "../../../i18n/config.i18n";
 import { actions } from "astro:actions";
+import { ui } from "../../../i18n/ui.i18n";
 
 import Breadcrumb from "../../../components/product/sections/Breadcrumb.astro";
 import HeroCategory from "../../../components/category/sections/HeroCategory.astro";
@@ -15,7 +16,7 @@ const categorySlug = Astro.params.category as string;
 // Fetch Data
 const { data: categoryResponse } = await Astro.callAction(
     actions.getCategoryBySlug,
-    { slug: categorySlug },
+    { slug: categorySlug, lang },
 );
 const category = categoryResponse?.data;
 
@@ -25,13 +26,13 @@ if (!category) {
 
 const { data: productsResponse } = await Astro.callAction(
     actions.getProductsByCategory,
-    { categorySlug },
+    { categorySlug, lang },
 );
 const products = productsResponse?.data || [];
 ---
 
 <Layout
-    title={`${category.name} | Dolex`}
+    title={`${category.name} | ${ui[lang].layout.catalogTitle}`}
     lang={lang}
     description=""
     image={category.banner}

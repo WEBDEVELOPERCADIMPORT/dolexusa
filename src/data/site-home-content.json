@@ -32,10 +32,26 @@
       "title": "¿Cuál es tu síntoma hoy?",
       "description": "El alivio rápido para el dolor o la molestia",
       "items": [
-        { "title": "Dolor de cabeza intenso", "product": "Dolex Forte" },
-        { "title": "Dolor de espalda o cuello", "product": "Dolex Flex" },
-        { "title": "Cólicos menstruales", "product": "Dolex Fem" },
-        { "title": "Fiebre o malestar infantil", "product": "Dolex Children" }
+        {
+          "title": "Dolor de cabeza intenso",
+          "product": "Dolex Forte",
+          "heroDescription": "El bienestar de tu familia merece una solución completa que responda con eficacia ante cualquier imprevisto. Este Analgésico Integral ofrece un alivio rápido, seguro y duradero frente a una amplia variedad de malestares cotidianos."
+        },
+        {
+          "title": "Dolor de espalda o cuello",
+          "product": "Dolex Flex",
+          "heroDescription": "Recupera tu flexibilidad, restaura tu movilidad y mantén tu cuerpo en movimiento. Este tratamiento analgésico de cápsulas de gel blando ha sido diseñado específicamente para combatir el dolor muscular, la tensión y la rigidez corporal."
+        },
+        {
+          "title": "Cólicos menstruales",
+          "product": "Dolex Fem",
+          "heroDescription": "No permitas que los cólicos y el malestar transformen esos días del mes en un obstáculo. DOLEX FEM es el aliado terapéutico diseñado específicamente para la mujer moderna, ofreciendo alivio rápido y efectivo."
+        },
+        {
+          "title": "Fiebre o malestar infantil",
+          "product": "Dolex Children",
+          "heroDescription": "Cuando los más pequeños de la casa se sienten mal, el bienestar de todo el hogar se detiene. La Suspensión Oral para Niños es la solución médica confiable diseñada específicamente para aliviar el dolor y reducir la fiebre."
+        }
       ]
     },
     "faq": {
@@ -95,10 +111,26 @@
       "title": "What is your symptom today?",
       "description": "Fast relief for pain or discomfort",
       "items": [
-        { "title": "Severe headache", "product": "Dolex Forte" },
-        { "title": "Back or neck pain", "product": "Dolex Flex" },
-        { "title": "Menstrual cramps", "product": "Dolex Fem" },
-        { "title": "Fever or child discomfort", "product": "Dolex Children" }
+        {
+          "title": "Severe headache",
+          "product": "Dolex Forte",
+          "heroDescription": "Your family's well-being deserves a complete solution that responds effectively to any unforeseen event. This Comprehensive Pain Reliever offers fast, safe, and long-lasting relief from a wide variety of everyday ailments."
+        },
+        {
+          "title": "Back or neck pain",
+          "product": "Dolex Flex",
+          "heroDescription": "Regain your flexibility, restore your mobility, and keep your body moving. This analgesic treatment of softgel capsules has been specifically designed to combat muscle pain, tension, and body stiffness."
+        },
+        {
+          "title": "Menstrual cramps",
+          "product": "Dolex Fem",
+          "heroDescription": "Don't let cramps and discomfort turn those days of the month into an obstacle. DOLEX FEM is the therapeutic ally specifically designed for the modern woman, offering fast and effective relief."
+        },
+        {
+          "title": "Fever or child discomfort",
+          "product": "Dolex Children",
+          "heroDescription": "When the little ones in the house feel bad, the well-being of the whole home stops. The Oral Suspension for Children is the reliable medical solution specifically designed to relieve pain and reduce fever."
+        }
       ]
     },
     "faq": {

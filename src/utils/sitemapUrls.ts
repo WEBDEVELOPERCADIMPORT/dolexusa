@@ -18,7 +18,8 @@ const getHomeUrls = (): string[] => {
 const getCategoryUrls = (): string[] => {
     const urls: string[] = [];
     for (const lang of langs) {
-        for (const cat of categoriesData.categories) {
+        // @ts-ignore
+        for (const cat of categoriesData[lang].categories) {
             urls.push(`${BASE_URL}/${lang}/${cat.slug}`);
         }
     }
@@ -31,7 +32,8 @@ const getCategoryUrls = (): string[] => {
 const getProductUrls = (): string[] => {
     const urls: string[] = [];
     for (const lang of langs) {
-        for (const prod of productsData.products) {
+        // @ts-ignore
+        for (const prod of productsData[lang].products) {
             urls.push(`${BASE_URL}/${lang}/${prod.category}/${prod.slug}`);
         }
     }

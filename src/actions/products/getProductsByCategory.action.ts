@@ -18,9 +18,11 @@ export interface Product {
 export const getProductsByCategory = defineAction({
     input: z.object({
         categorySlug: z.string(),
+        lang: z.enum(["es", "en"]).default("es")
     }),
-    handler: async ({ categorySlug }): Promise<{ message: string, data: Product[] }> => {
-        const data = content.products as Product[];
+    handler: async ({ categorySlug, lang }): Promise<{ message: string, data: Product[] }> => {
+        // @ts-ignore
+        const data = content[lang].products as Product[];
         const products = data.filter(p => p.category === categorySlug);
 
         return { message: "Products retrieved successfully", data: products };

@@ -15,19 +15,25 @@
   --animate-shadow: shadow 6s ease-in-out infinite;
 
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0);
     }
+
     50% {
       transform: translateY(-20px);
     }
   }
 
   @keyframes shadow {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateX(-50%) scale(1);
       opacity: 0.4;
     }
+
     50% {
       transform: translateX(-50%) scale(0.8);
       opacity: 0.2;

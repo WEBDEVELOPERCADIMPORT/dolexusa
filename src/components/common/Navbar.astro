@@ -13,7 +13,7 @@ const switchLangPath =
 
 const { data: categoriesResponse } = await Astro.callAction(
   actions.getCategories,
-  {},
+  { lang },
 );
 const categories = categoriesResponse?.data || [];
 

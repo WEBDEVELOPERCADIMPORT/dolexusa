@@ -3,6 +3,7 @@ import { FadeInText, ScaleIn } from "@astroanimate/core";
 
 import type { Category } from "../../../actions/categories/getCategories.action";
 import categoryContent from "../../../data/site-category-content.json";
+import homeContent from "../../../data/site-home-content.json";
 import type { Lang } from "../../../i18n/config.i18n";
 
 interface Props {
@@ -12,6 +13,10 @@ interface Props {
 
 const { category, lang } = Astro.props;
 const data = categoryContent[lang].hero;
+
+const symptoms = homeContent[lang].symptoms.items;
+const symptomMatch = symptoms.find(s => s.product === category.name);
+const description = symptomMatch ? symptomMatch.heroDescription : `Descubre el alivio que necesitas con la línea especializada de ${category.name}. Diseñado para actuar donde más lo necesitas.`;
 ---
 
 <section
@@ -42,9 +47,7 @@ const data = categoryContent[lang].hero;
                 enhance={false}
                 delay={0.25}
                 class="text-lg leading-relaxed opacity-90"
-                >Descubre el alivio que necesitas con la línea especializada de {
-                    category.name
-                }. Diseñado para actuar donde más lo necesitas.</FadeInText
+                >{description}</FadeInText
             >
         </div>
 

@@ -11,6 +11,7 @@ import Categories from "../../components/home/sections/Categories.astro";
 import Symptoms from "../../components/home/sections/Symptoms.astro";
 import FAQ from "../../components/home/sections/FAQ.astro";
 import Places from "../../components/home/sections/Places.astro";
+import { ui } from "../../i18n/ui.i18n";
 
 const lang = Astro.params.lang as Lang;
 
@@ -22,13 +23,13 @@ const globalData = content[lang];
 const data = homeContent[lang];
 const { data: categoriesResult } = await Astro.callAction(
     actions.getCategories,
-    {},
+    { lang },
 );
 const categories = categoriesResult?.data || [];
 ---
 
 <Layout
-    title={`Dolex - ${data.hero.title}`}
+    title={`Dolex - ${data.hero.title} | Dolex`}
     lang={lang}
     description={data.hero.description}
     image="/images/hero/home/hero_1.home.png"

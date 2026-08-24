@@ -9,6 +9,9 @@ export const ui = {
         footer: {
             rights: 'Todos los derechos reservados.',
         },
+        layout: {
+            catalogTitle: 'catálogo especializado Dolex'
+        }
     },
     en: {
         nav: {
@@ -20,5 +23,8 @@ export const ui = {
         footer: {
             rights: 'All rights reserved.',
         },
+        layout: {
+            catalogTitle: 'Dolex specialized catalog'
+        }
     },
 } as const;
