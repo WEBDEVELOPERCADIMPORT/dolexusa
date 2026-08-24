@@ -3,6 +3,7 @@ import Layout from "../../../layouts/Layout.astro";
 import type { Lang } from "../../../i18n/config.i18n";
 import { actions } from "astro:actions";
 import { ui } from "../../../i18n/ui.i18n";
+import homeContent from "../../../data/site-home-content.json";
 
 import Breadcrumb from "../../../components/product/sections/Breadcrumb.astro";
 import HeroCategory from "../../../components/category/sections/HeroCategory.astro";
@@ -29,12 +30,16 @@ const { data: productsResponse } = await Astro.callAction(
     { categorySlug, lang },
 );
 const products = productsResponse?.data || [];
+
+const symptoms = homeContent[lang].symptoms.items;
+const symptomMatch = symptoms.find(s => s.product === category.name);
+const categoryDescription = symptomMatch ? symptomMatch.heroDescription : "";
 ---
 
 <Layout
     title={`${category.name} | ${ui[lang].layout.catalogTitle}`}
     lang={lang}
-    description=""
+    description={categoryDescription}
     image={category.banner}
 >
     <main>
